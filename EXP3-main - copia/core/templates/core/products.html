@@ -1,0 +1,385 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nosotros</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'img/planta.png' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+    </head>
+<body>
+    <header>
+        <nav>
+          <div class="logo">
+            <img src="{% static 'img/planta.png' %}" alt="Logo" width="30" height="30">
+            <span class="logo-text">Jardinería</span>
+          </div>
+          <div class="toggle-menu">&#9776;</div>
+          <ul class="menu">
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'about' %}">Nosotros</a></li>
+            <li><a href="{% url 'products' %}">Productos</a></li>
+            <li><a href="{% url 'products' %} #contacto-section">Contáctanos</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+            {% else %}
+              <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+            {% endif %}
+          </ul> 
+        </nav>
+    </header>
+
+
+
+
+    <br><section class="banner">
+        <h1>Bienvenido a nuestra tienda de productos de jardinería</h1>
+        <p>Descubre cómo transformar tu jardín en un paraíso verde</p>
+        <div class="container-clock">
+            <h1 id="time">00:00:00</h1>
+        </div>
+    </section><br>
+
+
+    <button id="scrollToTopBtn" class="scroll-btn">↑</button>
+    <button id="scrollToBottomBtn" class="scroll-btn">↓</button>
+
+
+    <!-- Agrega más productos aquí -->
+
+
+    <div class="cart-section">
+      <h2>Carrito de Compras</h2>
+      <ul id="cart-list"></ul>
+      <p id="total-price">Total: CLP 0</p>
+      <button id="empty-cart-button">Vaciar Carrito</button>
+    </div><br>
+
+
+    <div class="products-section">
+      <div class="product">
+        <img src="{% static '/img/lampara_solar.jpg' %}" alt="Producto 1">
+        <h3>Pack 4 Faroles de Jardin</h3>
+        <div class="rating">
+          <span class="star"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+        </div>
+        <p class="price">CLP 19990</p>
+        <p class="offer">¡Oferta! Antes CLP 35,000</p>
+        <button class="buy-button">Comprar</button>
+      </div>
+    
+      <div class="product">
+        <img src="{% static '/img/carretillaverde.jpg' %}" alt="Producto 2">
+        <h3>Carretilla de Aluminio</h3>
+        <div class="rating">
+          <span class="star"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+          <span class="star"></span>
+        </div>
+        <p class="price">CLP 35000</p>
+        <p class="offer">¡Oferta! Antes CLP 60,000</p>
+        <button class="buy-button">Comprar</button>
+      </div>
+
+
+      <div class="product">
+          <img src="{% static '/img/fertilizantes.jpg' %}" alt="Producto 3">
+          <h3>Fertilizante Organico 5L.</h3>
+          <div class="rating">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+          </div>
+          <p class="price">CLP 17990</p>
+          <p class="offer">¡Oferta! Antes CLP 24.990</p>
+          <button class="buy-button">Comprar</button>
+      </div>
+
+
+      <div class="product">
+          <img src="{% static '/img/Hortalizas-antiguas-Organico-Kit-regalo-de-semillas-con-3-variedades-de-verduras-historicas-1000px.jpg' %}" alt="Producto 4">
+          <h3>Kit Semillas Hortalizas</h3>
+          <div class="rating">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+          </div>
+          <p class="price">CLP 22500</p>
+          <p class="offer">¡Oferta! Antes CLP 28,990</p>
+          <button class="buy-button">Comprar</button>
+      </div>
+      
+
+      <div class="product">
+          <img src="{% static '/img/D_NQ_NP_636139-MLC44964571839_022021-O.jpg' %}" alt="Producto 5">
+          <h3>Kit Herramientas 8pz. + Bolsito</h3>
+          <div class="rating">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+          </div>
+          <p class="price">CLP 59990</p>
+          <p class="offer">¡Oferta! Antes CLP 98,990</p>
+          <button class="buy-button">Comprar</button>
+      </div>
+
+
+      <div class="product">
+          <img src="{% static '/img/maceteros_prod.jpg' %}" alt="Producto 6">
+          <h3>Maceteros Distintos Tamaños</h3>
+          <div class="rating">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+          </div>
+          <p class="price">CLP 8000</p>
+          <p class="offer">¡Oferta! Antes CLP 18,000</p>
+          <button class="buy-button">Comprar</button>
+      </div>
+      
+
+      <div class="product">
+          <img src="{% static '/img/tierra_hoja_prod.jpg' %}" alt="Producto 7">
+          <h3>Tierra De Hojas 15L.</h3>
+          <div class="rating">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+          </div>
+          <p class="price">CLP 22510</p>
+          <p class="offer">¡Oferta! Antes CLP 32,720</p>
+          <button class="buy-button">Comprar</button>
+      </div>
+
+
+      <div class="product">
+          <img src="{% static '/img/regadera_prod.jpg' %}" alt="Producto 8">
+          <h3>Regadera Aluminio 5L.</h3>
+          <div class="rating">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+          </div>
+          <p class="price">CLP 15900</p>
+          <p class="offer">¡Oferta! Antes CLP 18,250</p>
+          <button class="buy-button">Comprar</button>
+      </div>
+
+
+
+      <div class="product">
+          <img src="{% static '/img/herramientas_basicas_prod.jpg' %}" alt="Producto 9">
+          <h3>Kit Herramienta Basicas 4Pz.</h3>
+          <div class="rating">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+          </div>
+          <p class="price">CLP 45790</p>
+          <p class="offer">¡Oferta! Antes CLP 69,910</p>
+          <button class="buy-button">Comprar</button>
+    </div>
+  </div><br>
+
+
+
+
+    <!--Seccion de tienda-->
+    
+    
+    </div><br>
+    <section id="contacto-section">
+        <h2 class="contacto-titulo">Contáctanos</h2>
+        <p class="contacto-descripcion">¡Estamos aquí para ayudarte! Si tienes alguna pregunta o consulta, no dudes en ponerte en contacto con nosotros.</p>
+      
+        <div class="contacto-info">
+          <div class="contacto-info-item">
+            <i class="fa fa-map-marker"></i>
+            <p class="contacto-direccion">Dirección: Av. Esq. Blanca 501, Maipú, Chile</p>
+          </div>
+          <div class="contacto-info-item">
+            <i class="fa fa-phone"></i>
+            <p class="contacto-telefono">Teléfono: +56976666680</p>
+          </div>
+          <div class="contacto-info-item">
+            <i class="fa fa-envelope"></i>
+            <p class="contacto-email">Email: re.sobarzo@duocuc.cl</p>
+          </div>
+        </div>
+        <section id="contacto">
+            <h2>Formulario de registro</h2>
+            <form id="mi-formulario" method="post">
+                <div class="form-group">
+                    <label for="nom">Nombre de usuario</label>
+                    <input type="text" id="nom" name="nom" required 
+                        minlength="3" placeholder="EJ: Renan Sobarzo Diaz" class="form-control">
+                </div>
+    
+                <div class="form-group">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="text" id="correo" name="correo" required
+                        placeholder="EJ: Re.sobarzo@duocuc.cl" class="form-control">
+                </div>
+    
+                <div class="form-group">
+                    <label for="fono">Teléfono</label>
+                    <input type="number" id="fono" name="fono" required
+                        minlength="9" class="form-control">
+                </div>
+    
+                <div class="form-group">
+                    <label for="fecha">Fecha de nacimiento</label>
+                    <input type="date" id="fecha" name="fecha" required 
+                        min="1940-01-01" class="form-control">
+                </div>
+    
+                <div class="form-group">
+                    <label for="pass">Contraseña</label>
+                    <input type="password" id="pass" name="pass" required
+                        minlength="8" class="form-control">
+                </div>
+    
+                <div class="form-group">
+                    <label for="pass2">Repetir Contraseña</label>
+                    <input type="password" id="pass2" name="pass2" required
+                        minlength="8" class="form-control">
+                </div>
+    
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" class="form-control"></textarea>
+                </div>
+    
+                <input type="submit" value="Enviar" id="enviar" class="btn btn-success">
+                <input type="reset" value="Limpiar" id="limpiar" class="btn btn-warning">
+            </form>
+        </section>
+    </section><br>
+    <footer id="footer" class="footer">
+        <div class="container">  <!--Los contenedores proporcionan un medio para centrar y rellenar horizontalmente el contenido de la pag-->
+          <div class="row gy-3">
+            <div class="img1">
+              <figure>
+                  <img src="{% static 'img/planta.png' %}" width="50px" height="50px">
+              </figure>
+            </div>
+            <div class="col-lg-3 col-md-6 d-flex">            <!--d-flex Gestiona el dineño, alineacion y tamaño de las columnas de la cuadricula.-->
+              <div>
+                <h4>Dirección</h4>
+                <p>
+                    Av. Esq. Blanca 501 <br>
+                    Maipú, Región Metropolitana<br>
+                </p>
+              </div>
+    
+            </div>
+    
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+              <div>
+                <h4>Contáctanos</h4>
+                <p>
+                  <strong>Telefono:</strong> +56976666680<br>  <!-- (STRONG) se usa para definir texto con gran importancia y lo muestra en negrita-->
+                  <strong>Correo:</strong> re.sobarzo@duocuc.cl<br>
+                </p>
+              </div>
+            </div>
+  
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Siguenos</h4>
+              <div class="social-links d-flex">
+                <a href="https://twitter.com/home?lang=es" class="twitter"><i class="fa fa-twitter"></i></a>     
+                <a href="https://web.facebook.com/?_rdc=1&_rdr" class="facebook"><i class="fa fa-facebook"></i></a>        <!-- Nos indica un icono   -->
+                <a href="https://www.instagram.com/" class="instagram"><i class="fa fa-instagram"></i></a>
+                <a href="https://cl.linkedin.com/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="container">
+          <div class="copyright">
+            &copy; Copyright <strong><span>Duoc UC</span></strong>. Todos los derechos reservados.
+          </div>
+          <div class="credits">Diseñado con <a href="https://www.w3schools.com">w3schools</a>
+          </div>
+        </div>
+    
+    </footer>
+</body>
+<script src="{% static '/js/java.js' %}"></script>
+<script>//Tienda seccion de productos
+
+  // Obtener los elementos necesarios
+  const buyButtons = document.querySelectorAll('.buy-button');
+  const cartList = document.getElementById('cart-list');
+  const totalPrice = document.getElementById('total-price');
+  const emptyCartButton = document.getElementById('empty-cart-button');
+  
+  let cartItems = [];
+  let total = 0;
+  
+  // Función para agregar un producto al carrito
+  function addToCart(product) {
+    cartItems.push(product);
+    total += product.price;
+    renderCart();
+  }
+  
+  // Función para eliminar un producto del carrito
+  function removeFromCart(product) {
+    const index = cartItems.indexOf(product);
+    if (index > -1) {
+      cartItems.splice(index, 1);
+      total -= product.price;
+      renderCart();
+    }
+  }
+  
+  // Función para renderizar el carrito
+  function renderCart() {
+    cartList.innerHTML = '';
+    cartItems.forEach(product => {
+      const li = document.createElement('li');
+      li.textContent = product.name;
+      cartList.appendChild(li);
+    });
+    totalPrice.textContent = `Total: CLP ${total}`;
+  }
+  
+  // Evento al hacer clic en un botón de "Comprar"
+  buyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const product = {
+        name: button.parentElement.querySelector('h3').textContent,
+        price: parseInt(button.parentElement.querySelector('.price').textContent.replace('CLP ', ''))
+      };
+      addToCart(product);
+    });
+  });
+  
+  // Evento al hacer clic en el botón de "Vaciar Carrito"
+  emptyCartButton.addEventListener('click', () => {
+    cartItems = [];
+    total = 0;
+    renderCart();
+  });
+</script>
+</html>
